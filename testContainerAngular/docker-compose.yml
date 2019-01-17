@@ -1,0 +1,17 @@
+version: '2.3'
+
+services:
+ angular:
+  hostname: localhost
+  container_name: angular-container
+  build: .
+  ports:
+   - 8080:8080
+
+ nginx:
+  container_name: nginx-container
+  image: nginx:1.13.12-alpine
+  volumes:
+   - ./nginx_proxy.conf:/etc/nginx/conf.d/default.conf
+  ports:
+   - "80:80"
